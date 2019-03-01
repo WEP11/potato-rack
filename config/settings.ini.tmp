@@ -1,0 +1,10 @@
+[database]
+db_name         = potato_rack
+db_user         = potato
+db_password     = password
+
+[instance_settings]
+company         = My Organization
+admin_email     = admin@adminWorld.com
+authentication  = 0                         ; 0 - No Authentication, 1 - htaccess, 2 - phpCAS
+cas_url         = myCasProvider.com         ; Only needed for phpCAS
