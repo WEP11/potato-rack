@@ -11,3 +11,4 @@ cas_domain      = provider.com              ; Only needed for phpCAS
 cas_port        = 443
 cas_dir         = /directory/at/domain
 cas_crt         = /config/myProvider.crt    ; Store this in the config folder
+cas_redirect    = https://www.google.com/

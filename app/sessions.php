@@ -36,7 +36,7 @@ class PotatoSession
             $uname = phpCAS::getUser();
         }
         
-        
+        $CAS_REDIR = $settings['cas_redirect'];
         session_unset();
         session_destroy();
                 
@@ -50,8 +50,8 @@ class PotatoSession
         if ($row[2] != 't' && $row[3] != 't' && $row[4] != 't')
         {
           $_SESSION['message'] = 'You are not authorized to access this resource';
-          phpCAS::logoutWithRedirectService('https://hprcc.unl.edu/');
-          header("location:https://hprcc.unl.edu/");
+          phpCAS::logoutWithRedirectService($CAS_REDIR);
+          header("location:$CAS_REDIR");
         }
         
         // Find user level
@@ -105,7 +105,7 @@ class PotatoSession
         session_start();
         $_SESSION['message']="You have been logged out";
         phpCAS::client(CAS_VERSION_2_0, $settings['cas_domain'], $settings['cas_port'], $settings['cas_dir']);
-        phpCAS::logoutWithRedirectService('https://hprcc.unl.edu/');
+        phpCAS::logoutWithRedirectService($CAS_REDIR);
 
     }
 }
