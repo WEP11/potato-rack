@@ -1,1 +1,2 @@
-.ini
+*.ini
+server-directives.php

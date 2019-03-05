@@ -1,0 +1,8 @@
+<?php
+  // COPY THIS TO THE PUBLIC FOLDER AS server-directives.php
+  global $sourceRoot;
+  global $webRoot;
+
+  $sourceRoot="/data/potato-rack"; // Location of the root source directory
+  $webRoot = $sourceRoot."/public/";
+?>
