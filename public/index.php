@@ -3,6 +3,7 @@
     include($sourceRoot."/app/sessions.php");
     
     $userInstance = new PotatoSession;
+    $userInstance::sessionStart();
 ?>
 <html>
     <head>
@@ -42,9 +43,10 @@
     
     <body>
         <div id="header">
-            <img src="https://farm5.staticflickr.com/4534/24303348508_28cbff0856_b.jpg">
+            <img src="images/potato-big.png">
             <h1>Potato Rack</h1>
         </div>
+
         <div id="tabs">
             <ul>
                 <li><a href="rack.php">Racks</a></li>
@@ -63,7 +65,8 @@
                     }
                     else 
                     {
-                        echo $_SESSION['auth'];
+                        echo "<b>Logged in as: </b>&nbsp;" . $_SESSION['UID'] . "<br>";
+                        echo "<a href='logout.php'>LOGOUT</a>";
                     }
                 ?>
             </div>

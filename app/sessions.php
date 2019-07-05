@@ -25,11 +25,13 @@ class PotatoSession
         }
         else if ($settings['authentication'] == 2 )
         {
+            phpCAS::setDebug();
+            phpCAS::setVerbose(true);
             // initialize phpCAS
-            phpCAS::client(CAS_VERSION_2_0, $settings['cas_domain'], $settings['cas_port'], $settings['cas_dir']);
+            phpCAS::client(CAS_VERSION_2_0, $settings['cas_domain'], (int)$settings['cas_port'], $settings['cas_dir']);
             phpCAS::setCasServerCACert($sourceRoot . $settings['cas_crt']);
             
-            // phpCAS::setNoCasServerValidation(); // Debug Only. Not for production!
+            //phpCAS::setNoCasServerValidation(); // Debug Only. Not for production!
             
             // force CAS authentication
             phpCAS::forceAuthentication();
@@ -73,7 +75,7 @@ class PotatoSession
         $_SESSION['UID']=$row[1];
         $_SESSION['sessionID']=session_create_id();
         $_SESSION['level']=$level;
-        
+        $_SESSION['auth'] = 1;
         $_SESSION['REMOTE_USER'] = $row[0];
     }
 
