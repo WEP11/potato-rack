@@ -241,6 +241,35 @@ else if ($table == "organizations")
     }
     
     echo "</table>";
+    echo "
+<div id='dialog' title='Basic dialog'>
+    <p class='validateTips'>All form fields are required.</p>
+
+    <form>
+        <fieldset>
+            <label for='name'>Name</label>
+            <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'>
+
+            <label for='description'>Description</label>
+            <input type='text' name='description' id='description' class='text ui-widget-content ui-corner-all'>
+
+            <label for='accountNumber'>Account Number</label>
+            <input type='text' name='accountNumber' id='accountNumber' class='text ui-widget-content ui-corner-all'>
+
+            <input type='checkbox' name='orgType' value='Customer'> Customer<br>
+            <input type='checkbox' name='orgType' value='Developer'> Developer<br>
+            <input type='checkbox' name='orgType' value='Manufacturer' Manufacturer<br> 
+
+            <label for='url'>URL</label>
+            <input type='text' name='url' id='url' class='text ui-widget-content ui-corner-all'>
+
+            <label for='notes'>Notes</label>
+            <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'>
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
+        </fieldset>
+    </form>
+</div>";
     
 }
 else if ($table == "operating_systems")
@@ -281,7 +310,25 @@ else if ($table == "roles")
     }
     
     echo "</table>";
-    
+    echo "
+<div id='dialog' title='Basic dialog'>
+    <p class='validateTips'>All form fields are required.</p>
+
+    <form>
+        <fieldset>
+            <label for='name'>Name</label>
+            <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'>
+
+            <label for='description'>Description</label>
+            <input type='text' name='description' id='description' class='text ui-widget-content ui-corner-all'>
+
+            <label for='notes'>Notes</label>
+            <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'>
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
+        </fieldset>
+    </form>
+</div>";
 }
 else if ($table == "rooms")
 {
