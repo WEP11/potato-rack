@@ -305,8 +305,6 @@ else if ($table == "network_interfaces")
             echo "<option value=$deviceRow[0]>$deviceRow[1]</option>";
         }
         
-    }
-
     echo "</select>";
     echo "
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
