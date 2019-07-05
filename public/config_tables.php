@@ -79,17 +79,20 @@ if ($table == "software")
     
     echo "</table>";
     echo "
-<div id='dialog-$table' title='Basic dialog'>
+<div id='dialog-$table' title='Add Software'>
     <p class='validateTips'>All form fields are required.</p>
 
     <form id='form-$table'>
         <fieldset>
             <label for='name'>Name</label>
-            <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'><br>
+
             <label for='description'>Description</label>
-            <input type='text' name='description' id='description' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='description' id='description' class='text ui-widget-content ui-corner-all'><br>
+
             <label for='notes'>Notes</label>
-            <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'><br>
+
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
         </fieldset>
@@ -115,7 +118,7 @@ else if ($table == "buildings")
     echo "</table>";
     
     echo "
-    <div id='dialog-$table' title='Basic dialog'>
+    <div id='dialog-$table' title='Add Building'>
     <p class='validateTips'>All form fields are required.</p>
 
     <form id='form-$table'>
@@ -155,16 +158,16 @@ else if ($table == "hardware")
     echo "</table>";
     
     echo "
-<div id='dialog-$table' title='Basic dialog'>
+<div id='dialog-$table' title='Add Hardware'>
     <p class='validateTips'>All form fields are required.</p>
 
     <form id='form-$table'>
         <fieldset>
             <label for='name'>Name</label>
-            <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'><br>
 
             <label for='manufacturer'>Manufacturer</label>
-            <select name='manufacturer' id='manufacturer'>";
+            <select name='manufacturer' id='manufacturer'><br>";
 
     $query = "SELECT * FROM organizations";
     $result = pg_query($query);
@@ -180,16 +183,16 @@ else if ($table == "hardware")
         }
     }
 
-    echo "</select>";
+    echo "</select><br>";
     echo "
             <label for='size'>Size (U)</label>
-            <input type='number' name='size' id='size min='1' max='5'>
+            <input type='number' name='size' id='size min='1' max='5'><br>
 
             <label for='urlSupport'>Support URL</label>
-            <input type='text' name='urlSupport' id='urlSupport' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='urlSupport' id='urlSupport' class='text ui-widget-content ui-corner-all'><br>
 
             <label for='urlSpec'>Specification URL</label>
-            <input type='text' name='urlSpec' id='urlSpec' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='urlSpec' id='urlSpec' class='text ui-widget-content ui-corner-all'><br>
 
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
@@ -218,7 +221,7 @@ else if ($table == "hostnames")
     echo "</table>";
 
     echo "
-<div id='dialog-$table' title='Basic dialog'>
+<div id='dialog-$table' title='Add Hostname'>
     <p class='validateTips'>All form fields are required.</p>
 
     <form id='form-$table'>
@@ -283,13 +286,13 @@ else if ($table == "network_interfaces")
     echo "</table>";
 
     echo "
-<div id='dialog-$table' title='Basic dialog'>
+<div id='dialog-$table' title='Add Interface'>
     <p class='validateTips'>All form fields are required.</p>
 
     <form id='form-$table'>
         <fieldset>
             <label for='address'>HW Address</label>
-            <input type='text' name='address' id='address' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='address' id='address' class='text ui-widget-content ui-corner-all'><br>
 
             <label for='device'>Device</label>
             <select name='device' id='device'>";
@@ -343,29 +346,30 @@ else if ($table == "organizations")
     
     echo "</table>";
     echo "
-<div id='dialog-$table' title='Basic dialog'>
+<div id='dialog-$table' title='Add Organization'>
     <p class='validateTips'>All form fields are required.</p>
 
     <form id='form-$table'>
         <fieldset>
             <label for='name'>Name</label>
-            <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'><br>
 
             <label for='description'>Description</label>
-            <input type='text' name='description' id='description' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='description' id='description' class='text ui-widget-content ui-corner-all'><br>
 
             <label for='accountNumber'>Account Number</label>
-            <input type='text' name='accountNumber' id='accountNumber' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='accountNumber' id='accountNumber' class='text ui-widget-content ui-corner-all'><br>
 
             <input type='checkbox' name='orgType' value='Customer'> Customer<br>
             <input type='checkbox' name='orgType' value='Developer'> Developer<br>
-            <input type='checkbox' name='orgType' value='Manufacturer' Manufacturer<br> 
+            <input type='checkbox' name='orgType' value='Manufacturer'> Manufacturer<br> 
 
             <label for='url'>URL</label>
-            <input type='text' name='url' id='url' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='url' id='url' class='text ui-widget-content ui-corner-all'><br>
 
             <label for='notes'>Notes</label>
-            <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'><br>
+
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
         </fieldset>
@@ -393,13 +397,13 @@ else if ($table == "operating_systems")
     echo "</table>";
 
     echo "
-<div id='dialog-$table' title='Basic dialog'>
+<div id='dialog-$table' title='Add OS'>
     <p class='validateTips'>All form fields are required.</p>
 
     <form id='form-$table'>
         <fieldset>
             <label for='name'>Name</label>
-            <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'><br>
             
             <label for='developer'>Developer</label>
             <select name='developer' id='developer'>";
@@ -418,10 +422,10 @@ else if ($table == "operating_systems")
         }
     }
 
-    echo "</select>";
+    echo "</select><br>";
     echo "
             <label for='notes'>Notes</label>
-            <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'><br>
 
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
@@ -450,19 +454,20 @@ else if ($table == "roles")
     
     echo "</table>";
     echo "
-<div id='dialog-$table' title='Basic dialog'>
+<div id='dialog-$table' title='Add Role'>
     <p class='validateTips'>All form fields are required.</p>
 
     <form id='form-$table'>
         <fieldset>
             <label for='name'>Name</label>
-            <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'><br>
 
             <label for='description'>Description</label>
-            <input type='text' name='description' id='description' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='description' id='description' class='text ui-widget-content ui-corner-all'><br>
 
             <label for='notes'>Notes</label>
-            <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'><br>
+
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
         </fieldset>
@@ -487,13 +492,13 @@ else if ($table == "rooms")
     echo "</table>";
 
     echo "
-<div id='dialog-$table' title='Basic dialog'>
+<div id='dialog-$table' title='Add Room'>
     <p class='validateTips'>All form fields are required.</p>
 
     <form id='form-$table'>
         <fieldset>
             <label for='room'>Room</label>
-            <input type='text' name='room' id='room' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='room' id='room' class='text ui-widget-content ui-corner-all'><br>
             
             <label for='building'>Building</label>
             <select name='building' id='building'>";
@@ -509,7 +514,7 @@ else if ($table == "rooms")
         echo "<option value=$row[0]>$row[1] ($row[2])</option>";
     }
 
-    echo "</select>";
+    echo "</select><br>";
     echo "
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
@@ -537,7 +542,7 @@ else if ($table == "service_levels")
     
     echo "</table>";
     echo "
-<div id='dialog-$table' title='Basic dialog'>
+<div id='dialog-$table' title='Add Service Level'>
     <p class='validateTips'>All form fields are required.</p>
 
     <form id='form-$table'>
@@ -547,7 +552,7 @@ else if ($table == "service_levels")
             <label for='description'>Description</label>
             <input type='text' name='description' id='description' class='text ui-widget-content ui-corner-all'><br>
             <label for='notes'>Notes</label>
-            <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'>
+            <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'><br>
             
             <input type='hidden' id='table' name='table' value='$table'>
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
@@ -587,7 +592,7 @@ else if ($table == "users")
     echo "</table>";
     
     echo "
-<div id='dialog-$table' title='Basic dialog'>
+<div id='dialog-$table' title='Add User'>
     <p class='validateTips'>All form fields are required.</p>
 
     <form id='form-$table'>
@@ -622,11 +627,12 @@ $( function() {
     dialog = $( '#dialog-$table' ).dialog({
         autoOpen: false,
         modal: true,
+        minWidth: 200,
         buttons: {
-        'Add Entry': new_table_entry,
-        Cancel: function() {
-            dialog.dialog( 'close' );
-        }
+            'Add Entry': new_table_entry,
+            Cancel: function() {
+                $( '#dialog-$table' ).dialog( 'close' );
+            }
         },
         close: function() {
             $( '#dialog-$table' ).dialog( 'close' );
