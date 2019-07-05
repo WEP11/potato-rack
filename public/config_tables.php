@@ -79,10 +79,10 @@ if ($table == "software")
     
     echo "</table>";
     echo "
-<div id='dialog' title='Basic dialog'>
+<div id='dialog-$table' title='Basic dialog'>
     <p class='validateTips'>All form fields are required.</p>
 
-    <form>
+    <form id='form-$table'>
         <fieldset>
             <label for='name'>Name</label>
             <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'>
@@ -115,10 +115,10 @@ else if ($table == "buildings")
     echo "</table>";
     
     echo "
-    <div id='dialog' title='Basic dialog'>
+    <div id='dialog-$table' title='Basic dialog'>
     <p class='validateTips'>All form fields are required.</p>
 
-    <form>
+    <form id='form-$table'>
         <fieldset>
             <label for='building'>Building</label>
             <input type='text' name='building' id='building' class='text ui-widget-content ui-corner-all'>
@@ -155,10 +155,10 @@ else if ($table == "hardware")
     echo "</table>";
     
     echo "
-<div id='dialog' title='Basic dialog'>
+<div id='dialog-$table' title='Basic dialog'>
     <p class='validateTips'>All form fields are required.</p>
 
-    <form>
+    <form id='form-$table'>
         <fieldset>
             <label for='name'>Name</label>
             <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'>
@@ -166,7 +166,7 @@ else if ($table == "hardware")
             <label for='manufacturer'>Manufacturer</label>
             <select name='manufacturer' id='manufacturer'>";
 
-    $query = "SELECT * FROM 'organizations'";
+    $query = "SELECT * FROM organizations";
     $result = pg_query($query);
     if (!$result) {
         echo "Problem with query " . $query . "<br/>";
@@ -218,10 +218,10 @@ else if ($table == "hostnames")
     echo "</table>";
 
     echo "
-<div id='dialog' title='Basic dialog'>
+<div id='dialog-$table' title='Basic dialog'>
     <p class='validateTips'>All form fields are required.</p>
 
-    <form>
+    <form id='form-$table'>
         <fieldset>
             <label for='name'>Name</label>
             <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'>
@@ -232,7 +232,7 @@ else if ($table == "hostnames")
             <label for='interface'>Network Inteface</label>
             <select name='interface' id='interface'>";
 
-    $query = "SELECT * FROM 'network_interfaces'";
+    $query = "SELECT * FROM network_interfaces";
     $result = pg_query($query);
     if (!$result) {
         echo "Problem with query " . $query . "<br/>";
@@ -240,7 +240,7 @@ else if ($table == "hostnames")
         exit();
     }
     while ($row = pg_fetch_row($result)) {
-        $deviceQuery = "SELECT * FROM 'devices' WHERE id=$row[2]";
+        $deviceQuery = "SELECT * FROM devices WHERE id=$row[2]";
         $deviceResult = pg_query($query);
         if (!$deviceResult) {
             echo "Problem with query " . $deviceQuery . "<br/>";
@@ -283,10 +283,10 @@ else if ($table == "network_interfaces")
     echo "</table>";
 
     echo "
-<div id='dialog' title='Basic dialog'>
+<div id='dialog-$table' title='Basic dialog'>
     <p class='validateTips'>All form fields are required.</p>
 
-    <form>
+    <form id='form-$table'>
         <fieldset>
             <label for='address'>HW Address</label>
             <input type='text' name='address' id='address' class='text ui-widget-content ui-corner-all'>
@@ -294,7 +294,7 @@ else if ($table == "network_interfaces")
             <label for='device'>Device</label>
             <select name='device' id='device'>";
 
-        $deviceQuery = "SELECT * FROM 'devices'";
+        $deviceQuery = "SELECT * FROM devices";
         $deviceResult = pg_query($query);
         if (!$deviceResult) {
             echo "Problem with query " . $deviceQuery . "<br/>";
@@ -304,7 +304,7 @@ else if ($table == "network_interfaces")
         while ($deviceRow = pg_fetch_row($deviceResult)) {
             echo "<option value=$deviceRow[0]>$deviceRow[1]</option>";
         }
-        
+
     echo "</select>";
     echo "
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
@@ -343,10 +343,10 @@ else if ($table == "organizations")
     
     echo "</table>";
     echo "
-<div id='dialog' title='Basic dialog'>
+<div id='dialog-$table' title='Basic dialog'>
     <p class='validateTips'>All form fields are required.</p>
 
-    <form>
+    <form id='form-$table'>
         <fieldset>
             <label for='name'>Name</label>
             <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'>
@@ -393,10 +393,10 @@ else if ($table == "operating_systems")
     echo "</table>";
 
     echo "
-<div id='dialog' title='Basic dialog'>
+<div id='dialog-$table' title='Basic dialog'>
     <p class='validateTips'>All form fields are required.</p>
 
-    <form>
+    <form id='form-$table'>
         <fieldset>
             <label for='name'>Name</label>
             <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'>
@@ -404,7 +404,7 @@ else if ($table == "operating_systems")
             <label for='developer'>Developer</label>
             <select name='developer' id='developer'>";
 
-    $query = "SELECT * FROM 'organizations'";
+    $query = "SELECT * FROM organizations";
     $result = pg_query($query);
     if (!$result) {
         echo "Problem with query " . $query . "<br/>";
@@ -450,10 +450,10 @@ else if ($table == "roles")
     
     echo "</table>";
     echo "
-<div id='dialog' title='Basic dialog'>
+<div id='dialog-$table' title='Basic dialog'>
     <p class='validateTips'>All form fields are required.</p>
 
-    <form>
+    <form id='form-$table'>
         <fieldset>
             <label for='name'>Name</label>
             <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'>
@@ -487,10 +487,10 @@ else if ($table == "rooms")
     echo "</table>";
 
     echo "
-<div id='dialog' title='Basic dialog'>
+<div id='dialog-$table' title='Basic dialog'>
     <p class='validateTips'>All form fields are required.</p>
 
-    <form>
+    <form id='form-$table'>
         <fieldset>
             <label for='room'>Room</label>
             <input type='text' name='room' id='room' class='text ui-widget-content ui-corner-all'>
@@ -498,7 +498,7 @@ else if ($table == "rooms")
             <label for='building'>Building</label>
             <select name='building' id='building'>";
 
-    $query = "SELECT * FROM 'buildings'";
+    $query = "SELECT * FROM buildings";
     $result = pg_query($query);
     if (!$result) {
         echo "Problem with query " . $query . "<br/>";
