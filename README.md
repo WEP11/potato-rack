@@ -1,5 +1,7 @@
 # potato-rack
-![](public/images/potato-big.png?raw=true)
+
+<img src="https://github.com/WEP11/potato-rack/blob/master/public/images/potato-big.png" width="50%">
+
 Potato Rack is an attempt at a lightweight, PostgreSQL based IT inventory manager that is compatible with SSO solutions (mainly phpCAS). The main components will be:
 
 - Server inventory management
