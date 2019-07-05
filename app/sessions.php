@@ -101,13 +101,20 @@ class PotatoSession
     // Kill Session
     static function sessionKill()
     {
+        // Get Settings
+        include($_SERVER['DOCUMENT_ROOT']."/rack-test/server-directives.php");
+        $settings = parse_ini_file($sourceRoot . "/config/settings.ini");
+
+        // Destroy Session
         session_start();
         session_unset();
         session_destroy();
         session_start();
         $_SESSION['message']="You have been logged out";
-        phpCAS::client(CAS_VERSION_2_0, $settings['cas_domain'], $settings['cas_port'], $settings['cas_dir']);
-        phpCAS::logoutWithRedirectService($CAS_REDIR);
+
+        // Logout of CAS
+        phpCAS::client(CAS_VERSION_2_0, $settings['cas_domain'], (int)$settings['cas_port'], $settings['cas_dir']);
+        phpCAS::logoutWithRedirectService($settings['cas_redirect']);
 
     }
 }
