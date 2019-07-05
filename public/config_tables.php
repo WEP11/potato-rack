@@ -55,7 +55,7 @@ if (!$result) {
     exit();
 }
 
-echo    "<br><button id='cfg-add' class='ui-button ui-widget ui-corner-all' data-form='$table'>
+echo    "<br><button id='cfg-add-$table' class='ui-button ui-widget ui-corner-all' data-form='$table'>
                 Add <span class='ui-icon ui-icon-plus'></span>
             </button><br><br>";
             
@@ -95,7 +95,7 @@ if ($table == "software")
         </fieldset>
     </form>
 </div>";
-    echo "<script type='text/javascript' src='js/config_tables.js'></script>";
+    
 }
 else if ($table == "buildings")
 {
@@ -130,7 +130,6 @@ else if ($table == "buildings")
         </fieldset>
     </form>
 </div>";
-    echo "<script type='text/javascript' src='js/config_tables.js'></script>";
 }
 else if ($table == "hardware")
 {
@@ -172,7 +171,6 @@ else if ($table == "hardware")
         </fieldset>
     </form>
 </div>";
-    echo "<script type='text/javascript' src='js/config_tables.js'></script>";
 }
 else if ($table == "hostnames")
 {
@@ -321,6 +319,24 @@ else if ($table == "service_levels")
     }
     
     echo "</table>";
+    echo "
+<div id='dialog-$table' title='Basic dialog'>
+    <p class='validateTips'>All form fields are required.</p>
+
+    <form id='form-$table'>
+        <fieldset>
+            <label for='name'>Name</label>
+            <input type='text' name='name' id='name' class='text ui-widget-content ui-corner-all'><br>
+            <label for='description'>Description</label>
+            <input type='text' name='description' id='description' class='text ui-widget-content ui-corner-all'><br>
+            <label for='notes'>Notes</label>
+            <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'>
+            
+            <input type='hidden' id='table' name='table' value='$table'>
+            <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
+        </fieldset>
+    </form>
+</div>";
     
 }
 else if ($table == "users")
@@ -353,9 +369,57 @@ else if ($table == "users")
     
     echo "</table>";
     
+    echo "
+<div id='dialog-$table' title='Basic dialog'>
+    <p class='validateTips'>All form fields are required.</p>
+
+    <form id='form-$table'>
+        <fieldset>
+            <label for='username'>Username</label>
+            <input type='text' name='username' id='username' class='text ui-widget-content ui-corner-all'>
+            <br><br><br>
+            <label for='radio-1'>Superuser</label>
+            <input type='radio' name='level' id='3' value='3'><br>
+            <label for='radio-2'>Administrator</label>
+            <input type='radio' name='level' id='2' value='2'><br>
+            <label for='radio-3'>Staff</label>
+            <input type='radio' name='level' id='1' value='1'><br>
+            <input type='hidden' id='table' name='table' value='$table'>
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
+        </fieldset>
+    </form>
+</div>";
+    
 }
 
+echo "<script type='text/javascript' src='js/config_tables.js'></script>";
+echo "<script>
 
+$( function() {
+    
+    function new_table_entry() {
+        valid = writeFormData('$table');
+    }
+    
+    dialog = $( '#dialog-$table' ).dialog({
+        autoOpen: false,
+        modal: true,
+        buttons: {
+        'Add Entry': new_table_entry,
+        Cancel: function() {
+            dialog.dialog( 'close' );
+        }
+        },
+        close: function() {
+            $( '#dialog-$table' ).dialog( 'close' );
+        }
+    });
 
+    $( '#cfg-add-$table' ).on( 'click', function() {
+      $( '#dialog-$table' ).dialog( 'open' );
+    });
+} );
+</script>";
 
 ?>
