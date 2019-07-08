@@ -46,7 +46,7 @@ if (!in_array($table, $valid_tables)) {
 }
 
 $db = pg_connect('dbname=' . $settings['db_name'] . ' user=' . $settings['db_user'] . ' password=' . $settings['db_password']);
-
+error_log($table);
 switch($table) {
     case "users":
         $uname = $_POST['username'];
@@ -70,6 +70,8 @@ switch($table) {
         $query = "INSERT INTO users (username, is_super, is_admin, is_staff) VALUES ('$uname', '$isSuper', '$isAdmin', '$isStaff')";
         pg_query($query);
         
+        break;
+        
     case "service_levels":
         $name = $_POST['name'];
         $desc = $_POST['description'];
@@ -77,6 +79,121 @@ switch($table) {
                
         $query = "INSERT INTO service_levels (name, description, notes) VALUES ('$name', '$desc', '$notes')";
         pg_query($query);
+        
+        break;
+
+    case "software":
+        $name = $_POST['name'];
+        $desc = $_POST['description'];
+        $notes = $_POST['notes'];
+
+        $query = "INSERT INTO software (name, description, notes) VALUES ('$name', '$desc', '$notes')";
+        pg_query($query);
+        
+        break;
+
+    case "buildings":
+        $name = $_POST['building'];
+        $abbrev = $_POST['abbreviation'];
+
+        $query = "INSERT INTO buildings (name, short_name) VALUES ('$name', '$abbrev')";
+        pg_query($query);
+        
+        break;
+
+    case "hardware":
+        $name = $_POST['name'];
+        $manu = $_POST['manufacturer'];
+        $size = $_POST['size'];
+        $urlSupt = $_POST['urlSupport'];
+        $urlSpec = $_POST['urlSpec'];
+
+        $query = "INSERT INTO hardware (name, manufacturer, size, support_url, spec_url) VALUES ('$name', $manu, '$size', '$urlSupt', '$urlSpec')";
+        pg_query($query);
+        
+        break;
+
+    case "hostnames":
+        $name = $_POST['name'];
+        $alias = $_POST['alias'];
+        $interface = $_POST['interface'];
+
+        $query = "INSERT INTO hostnames (name, is_alias, network_interface) VALUES ('$name', '$alias', '$interface')";
+        pg_query($query);
+        
+        break;
+
+    case "network_interfaces":
+        $address = $_POST['address'];
+        $device = $_POST['device'];
+
+        $query = "INSERT INTO network_interfaces (mac_address, device) VALUES ('$address', '$device')";
+        pg_query($query);
+        
+        break;
+
+    case "organizations":
+        $name = $_POST['name'];
+        $desc = $_POST['description'];
+        $acct = $_POST['accountNumber'];
+        
+        if(isset($_POST['isCustomer'])){
+            $isCustomer = 'true';
+        }
+        else {
+            $isCustomer = 'false';
+        }
+        
+        if(isset($_POST['isDeveloper'])){
+            $isDeveloper = 'true';
+        }
+        else {
+            $isDeveloper = 'false';
+        }
+        
+        if(isset($_POST['isManufacturer'])){
+            $isManufacturer = 'true';
+        }
+        else {
+            $isManufacturer = 'false';
+        }
+        
+        $url = $_POST['url'];
+        $notes = $_POST['notes'];
+
+        $query = "INSERT INTO organizations (name, description, account_number, is_customer, is_developer, is_manufacturer, url, notes) VALUES ('$name', '$desc', '$acct', $isCustomer, $isDeveloper, $isManufacturer, '$url', '$notes')";
+        pg_query($query);
+        
+        break;
+
+    case "operating_systems":
+        $name = $_POST['name'];
+        $developer = $_POST['developer'];
+        $notes = $_POST['notes'];
+
+        $query = "INSERT INTO operating_systems (name, developer, notes) VALUES ('$name', $developer, '$notes')";
+        pg_query($query);
+        
+        break;
+
+    case "roles":
+        $name = $_POST['name'];
+        $desc = $_POST['description'];
+        $notes = $_POST['notes'];
+
+        $query = "INSERT INTO roles (name, description, notes) VALUES ('$name', '$desc', '$notes')";
+        pg_query($query);
+        
+        break;
+
+    case "rooms":
+        $name = $_POST['room'];
+        $building = $_POST['building'];
+
+        $query = "INSERT INTO rooms (name, bldg) VALUES ('$name', '$building')";
+        pg_query($query);
+        
+        break;
 }
 
 ?>

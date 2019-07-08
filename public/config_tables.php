@@ -93,6 +93,7 @@ if ($table == "software")
             <label for='notes'>Notes</label>
             <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'><br>
 
+            <input type='hidden' id='table' name='table' value='$table'>
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
         </fieldset>
@@ -128,6 +129,7 @@ else if ($table == "buildings")
             <label for='abbreviation'>Abbreviation</label>
             <input type='text' name='abbreviation' id='abbreviation' class='text ui-widget-content ui-corner-all'>
 
+            <input type='hidden' id='table' name='table' value='$table'>
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
         </fieldset>
@@ -169,7 +171,7 @@ else if ($table == "hardware")
             <label for='manufacturer'>Manufacturer</label>
             <select name='manufacturer' id='manufacturer'><br>";
 
-    $query = "SELECT * FROM organizations";
+    $query = "SELECT * FROM organizations WHERE is_manufacturer=TRUE";
     $result = pg_query($query);
     if (!$result) {
         echo "Problem with query " . $query . "<br/>";
@@ -194,6 +196,7 @@ else if ($table == "hardware")
             <label for='urlSpec'>Specification URL</label>
             <input type='text' name='urlSpec' id='urlSpec' class='text ui-widget-content ui-corner-all'><br>
 
+            <input type='hidden' id='table' name='table' value='$table'>
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
         </fieldset>
@@ -258,6 +261,7 @@ else if ($table == "hostnames")
 
     echo "</select>";
     echo "
+            <input type='hidden' id='table' name='table' value='$table'>
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
         </fieldset>
@@ -310,6 +314,7 @@ else if ($table == "network_interfaces")
 
     echo "</select>";
     echo "
+            <input type='hidden' id='table' name='table' value='$table'>
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
         </fieldset>
@@ -360,9 +365,9 @@ else if ($table == "organizations")
             <label for='accountNumber'>Account Number</label>
             <input type='text' name='accountNumber' id='accountNumber' class='text ui-widget-content ui-corner-all'><br>
 
-            <input type='checkbox' name='orgType' value='Customer'> Customer<br>
-            <input type='checkbox' name='orgType' value='Developer'> Developer<br>
-            <input type='checkbox' name='orgType' value='Manufacturer'> Manufacturer<br> 
+            <input type='checkbox' name='isCustomer' value='Customer'> Customer<br>
+            <input type='checkbox' name='isDeveloper' value='Developer'> Developer<br>
+            <input type='checkbox' name='isManufacturer' value='Manufacturer'> Manufacturer<br> 
 
             <label for='url'>URL</label>
             <input type='text' name='url' id='url' class='text ui-widget-content ui-corner-all'><br>
@@ -370,6 +375,7 @@ else if ($table == "organizations")
             <label for='notes'>Notes</label>
             <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'><br>
 
+            <input type='hidden' id='table' name='table' value='$table'>
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
         </fieldset>
@@ -408,7 +414,7 @@ else if ($table == "operating_systems")
             <label for='developer'>Developer</label>
             <select name='developer' id='developer'>";
 
-    $query = "SELECT * FROM organizations";
+    $query = "SELECT * FROM organizations WHERE is_developer=TRUE";
     $result = pg_query($query);
     if (!$result) {
         echo "Problem with query " . $query . "<br/>";
@@ -427,6 +433,7 @@ else if ($table == "operating_systems")
             <label for='notes'>Notes</label>
             <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'><br>
 
+            <input type='hidden' id='table' name='table' value='$table'>
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
         </fieldset>
@@ -468,6 +475,7 @@ else if ($table == "roles")
             <label for='notes'>Notes</label>
             <input type='text' name='notes' id='notes' class='text ui-widget-content ui-corner-all'><br>
 
+            <input type='hidden' id='table' name='table' value='$table'>
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
         </fieldset>
@@ -516,6 +524,7 @@ else if ($table == "rooms")
 
     echo "</select><br>";
     echo "
+            <input type='hidden' id='table' name='table' value='$table'>
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
         </fieldset>
