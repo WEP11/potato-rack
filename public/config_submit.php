@@ -194,6 +194,24 @@ switch($table) {
         pg_query($query);
         
         break;
+        
+    case "racks":
+        $name = $_POST['name'];
+        $size = $_POST['size'];
+        $room = $_POST['room'];
+        $notes = $_POST['notes'];
+
+        if(isset($_POST['isBottom'])){
+            $isNumBottom = 'true';
+        }
+        else {
+            $isNumBottom = 'false';
+        }
+        
+        $query = "INSERT INTO racks (name, size, room, is_numberedfrombottom, notes) VALUES ('$name', '$size', $room, $isNumBottom, '$notes')";
+        pg_query($query);
+        
+        break;
 }
 
 ?>
