@@ -1,4 +1,10 @@
 <?php
+include($_SERVER['DOCUMENT_ROOT']."/rack-test/server-directives.php");
+include($sourceRoot."/app/sessions.php");
+
+$userInstance = new PotatoSession;
+$userInstance::sessionCheck();
+
 // If the user isn't privileged, don't show anything.
 if (isset($_SESSION['auth']))
 {
@@ -8,7 +14,6 @@ if (isset($_SESSION['auth']))
     }
 }
 
-include($_SERVER['DOCUMENT_ROOT']."/rack-test/server-directives.php");
 $settings = parse_ini_file($sourceRoot . "/config/settings.ini");
 
 $table = $_GET["table"];

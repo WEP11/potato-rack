@@ -5,6 +5,11 @@
     $( "#cfg-tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
     } );
     <?php
+        include($_SERVER['DOCUMENT_ROOT']."/rack-test/server-directives.php");
+        include($sourceRoot."/app/sessions.php");
+
+        $userInstance = new PotatoSession;
+        $userInstance::sessionCheck();
         // If the user isn't privileged, don't show the user management tab.
         if ($_SESSION['auth'] != 0)
         {

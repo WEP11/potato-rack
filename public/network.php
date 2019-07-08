@@ -1,4 +1,10 @@
 <?php
+include($_SERVER['DOCUMENT_ROOT']."/rack-test/server-directives.php");
+include($sourceRoot."/app/sessions.php");
+
+$userInstance = new PotatoSession;
+$userInstance::sessionCheck();
+
 // If the user isn't privileged, don't show anything.
 if ($_SESSION['auth'] != 0)
 {
@@ -8,7 +14,6 @@ if ($_SESSION['auth'] != 0)
     }
 }
 
-include($_SERVER['DOCUMENT_ROOT']."/rack-test/server-directives.php");
 $settings = parse_ini_file($sourceRoot . "/config/settings.ini");
 
 $db = pg_connect('dbname=' . $settings['db_name'] . ' user=' . $settings['db_user'] . ' password=' . $settings['db_password']);

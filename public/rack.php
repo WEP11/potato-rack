@@ -1,4 +1,10 @@
 <?php
+include($_SERVER['DOCUMENT_ROOT']."/rack-test/server-directives.php");
+include($sourceRoot."/app/sessions.php");
+
+$userInstance = new PotatoSession;
+$userInstance::sessionCheck();
+
 // If the user isn't privileged, don't show anything.
 if ($_SESSION['auth'] != 0)
 {

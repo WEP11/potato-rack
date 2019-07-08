@@ -212,6 +212,10 @@ switch($table) {
         pg_query($query);
         
         break;
+        
+    case "devices":
+        
+        break;
 }
 
 ?>
